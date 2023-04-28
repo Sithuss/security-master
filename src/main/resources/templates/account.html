@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html th:replace="~{layout/masterLayout :: layout(~{::main})}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" th:href="@{bootstrap/css/bootstrap.min.css}">
+    <title>login</title>
+</head>
+<body>
+<main role="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Accounts</h3>
+                    </div>
+                    <div class="card-body">
+                        <h3>Account Information</h3>
+                        <h3>Logger Information:: <span sec:authentication="name"></span></h3>
+                        <h3>Roles</h3>
+                        <ul class="list-group" th:each="role : ${#authentication.getAuthorities()}">
+                            <li class="list-group-item" th:text="${role}"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

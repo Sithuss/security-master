@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html th:replace="~{layout/masterLayout :: layout(~{::main})}" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            <h4>Employee Table</h4>
+          </div>
+          <div class="card-body">
+            <table class="table table-striped mb-3">
+              <thead>
+              <tr>
+                <th>Id</th>
+                <th>Address</th>
+                <th>Cubicle No</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone Number</th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="emp : ${employees}">
+                <td th:text="${emp.id}"></td>
+                <td th:text="${emp.address}"></td>
+                <td th:text="${emp.cubicleNo}"></td>
+                <td th:text="${emp.firstName}"></td>
+                <td th:text="${emp.lastName}"></td>
+                <td th:text="${emp.phoneNumber}"></td>
+                <td><a th:href="@{'/employee/delete?id='+${emp.id}}" class="btn btn-outline-danger">Delete</a></td>
+              </tr>
+              </tbody>
+            </table>
+            <a th:href="@{/employee/employee-form}" class="btn btn-primary">New Employee</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>
